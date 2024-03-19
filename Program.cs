@@ -14,7 +14,7 @@ class Program
 
         var watch = System.Diagnostics.Stopwatch.StartNew();
 
-        Parallel.ForEach(Directory.EnumerateFiles(@"/Users/paulpacaud/Documents/ASI/INFRA/sample1/data/raw"), 
+        Parallel.ForEach(Directory.EnumerateFiles(@"./data/raw"), 
         (currentFile) => { helper.ResizeImage(currentFile); });
 
         watch.Stop();
@@ -22,7 +22,7 @@ class Program
 
         watch = System.Diagnostics.Stopwatch.StartNew();
 
-        foreach (string currentFile in Directory.EnumerateFiles(@"/Users/paulpacaud/Documents/ASI/INFRA/sample1/data/raw"))
+        foreach (string currentFile in Directory.EnumerateFiles(@"./data/raw"))
         { helper.ResizeImage(currentFile); }
 
         watch.Stop();
