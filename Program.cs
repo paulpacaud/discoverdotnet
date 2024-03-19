@@ -10,11 +10,15 @@ class Program
         Person person = new Person("John", 25);
         person.Hello(true);
 
-        using (Image image = Image.Load(@"/Users/paulpacaud/Documents/ASI/INFRA/sample1/data/raw/maxresdefault.jpg"))
+        // iterate over the folder data/raw and process each image to data/processed with Parallel.ForEach
+        Parallel.ForEach(Directory.EnumerateFiles(@"/Users/paulpacaud/Documents/ASI/INFRA/sample1/data/raw"), (currentFile) =>
         {
-            image.Mutate(x => x.Resize(image.Width / 2, image.Height / 2));
-            image.Save(@"/Users/paulpacaud/Documents/ASI/INFRA/sample1/data/processed/maxresdefault.jpg");
-        }
+            using (Image image = Image.Load(currentFile))
+            {
+                image.Mutate(x => x.Resize(image.Width / 2, image.Height / 2));
+                image.Save(currentFile.Replace("raw", "processed"));
+            }
+        });
     }
 }
 
@@ -31,12 +35,6 @@ class Person
 
     public void Hello(bool isLowercase)
     {
-        // string message = "hello " + Name + ", you are " + Age.ToString() + "!";
-        // if (isLowercase)
-        //     Console.WriteLine(message);
-        // else
-        //     Console.WriteLine(message.ToUpper());
-
         Console.WriteLine(JsonConvert.SerializeObject(this));
     }
 }
