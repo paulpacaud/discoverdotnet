@@ -10,17 +10,11 @@ class Program
         Person person = new Person("John", 25);
         person.Hello(true);
 
-        using (Image image = Image.Load("foo.jpg"))
+        using (Image image = Image.Load(@"/Users/paulpacaud/Documents/ASI/INFRA/sample1/data/raw/maxresdefault.jpg"))
         {
-            // Resize the image in place and return it for chaining.
-            // 'x' signifies the current image processing context.
             image.Mutate(x => x.Resize(image.Width / 2, image.Height / 2));
-
-            // The library automatically picks an encoder based on the file extension then
-            // encodes and write the data to disk.
-            // You can optionally set the encoder to choose.
-            image.Save("bar.jpg");
-        } // Dispose - releasing memory into a memory pool ready for the next image you wish to process.
+            image.Save(@"/Users/paulpacaud/Documents/ASI/INFRA/sample1/data/processed/maxresdefault.jpg");
+        }
     }
 }
 

@@ -15,3 +15,5 @@
 /Users/paulpacaud/Documents/ASI/INFRA/sample1/obj/Debug/net8.0/sample1.csproj.AssemblyReference.cache
 /Users/paulpacaud/Documents/ASI/INFRA/sample1/bin/Debug/net8.0/Newtonsoft.Json.dll
 /Users/paulpacaud/Documents/ASI/INFRA/sample1/obj/Debug/net8.0/sample1.csproj.Up2Date
+/Users/paulpacaud/Documents/ASI/INFRA/sample1/bin/Debug/net8.0/SixLabors.ImageSharp.dll
+/Users/paulpacaud/Documents/ASI/INFRA/sample1/obj/Debug/net8.0/sample1.sourcelink.json
