@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "/xmK9L4uYc5ifJlB2J/BrwiDeSyC3B/mCVS4yYY/UCLkcJcba/zQZCNPk/QcL9bLSVBgjBF2O/pZqzhjpYTHzA==",
+  "success": true,
+  "projectFilePath": "/Users/paulpacaud/Documents/ASI/INFRA/sample1/sample1.csproj",
+  "expectedPackageFiles": [
+    "/Users/paulpacaud/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
+    "/Users/paulpacaud/.nuget/packages/sixlabors.imagesharp/3.1.3/sixlabors.imagesharp.3.1.3.nupkg.sha512"
+  ],
+  "logs": []
+}
