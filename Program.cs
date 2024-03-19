@@ -1,7 +1,9 @@
 ﻿namespace sample1;
-using Newtonsoft.Json;
+using ClassesNamespace;
+
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
+using System.IO;
 
 class Program
 {
@@ -10,31 +12,21 @@ class Program
         Person person = new Person("John", 25);
         person.Hello(true);
 
-        // iterate over the folder data/raw and process each image to data/processed with Parallel.ForEach
-        Parallel.ForEach(Directory.EnumerateFiles(@"/Users/paulpacaud/Documents/ASI/INFRA/sample1/data/raw"), (currentFile) =>
-        {
-            using (Image image = Image.Load(currentFile))
-            {
-                image.Mutate(x => x.Resize(image.Width / 2, image.Height / 2));
-                image.Save(currentFile.Replace("raw", "processed"));
-            }
-        });
+        var watch = System.Diagnostics.Stopwatch.StartNew();
+
+        Parallel.ForEach(Directory.EnumerateFiles(@"/Users/paulpacaud/Documents/ASI/INFRA/sample1/data/raw"), 
+        (currentFile) => { helper.ResizeImage(currentFile); });
+
+        watch.Stop();
+        Console.WriteLine($"Execution Time (Parallel): {watch.ElapsedMilliseconds} ms");
+
+        watch = System.Diagnostics.Stopwatch.StartNew();
+
+        foreach (string currentFile in Directory.EnumerateFiles(@"/Users/paulpacaud/Documents/ASI/INFRA/sample1/data/raw"))
+        { helper.ResizeImage(currentFile); }
+
+        watch.Stop();
+        Console.WriteLine($"Execution Time (Sequential): {watch.ElapsedMilliseconds} ms");
     }
 }
 
-class Person
-{
-    public string Name { get; set; }
-    public int Age { get; set; }
-
-    public Person(string name, int age)
-    {
-        Name = name;
-        Age = age;
-    }
-
-    public void Hello(bool isLowercase)
-    {
-        Console.WriteLine(JsonConvert.SerializeObject(this));
-    }
-}
